@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, Text
+from sqlalchemy import Column, ForeignKey, Integer, String, Text, Boolean
 from sqlalchemy.orm import relationship
 from app.db.session import Base
 
@@ -8,6 +8,9 @@ class Course(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     description = Column(Text, nullable=True)
+    category = Column(String, nullable=True)
+    level = Column(String, nullable=True)
+    is_approved = Column(Boolean, default=False)
     teacher_id = Column(Integer, ForeignKey("users.id"))
 
     teacher = relationship("User", backref="courses_taught")

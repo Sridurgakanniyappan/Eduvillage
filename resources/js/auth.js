@@ -5,7 +5,7 @@ function logout() {
 
   localStorage.removeItem("token");
   localStorage.removeItem("role");
-  window.location.href = "login.html";
+  window.location.href = "../auth/login.html";
 }
 
 // ---------------- AUTH GUARD ----------------
@@ -15,13 +15,13 @@ function requireAuth(requiredRole) {
 
   // Not logged in
   if (!token || !role) {
-    window.location.href = "login.html";
+    window.location.href = "../auth/login.html";
     return;
   }
 
   // Role mismatch
   if (requiredRole && role !== requiredRole) {
-    window.location.href = "login.html";
+    window.location.href = "../auth/login.html";
     return;
   }
 

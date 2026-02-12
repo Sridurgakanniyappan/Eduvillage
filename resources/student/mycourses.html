@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="dashboard.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/style.css">
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
     <button id="menuBtn" class="menu-btn">☰</button>
 
     <div class="logo-container" style="display: flex;">
-      <img src="Long_logo.png" alt="Civora Nexus Logo" class="image-logo">
+      <img src="../images/Long_logo.png" alt="Civora Nexus Logo" class="image-logo">
       <div style="margin-left: 1.1rem;">
         <h1 style="font-size: 1.3rem;">EduVillage</h1>
         <small style="font-size: 0.8rem; opacity: 0.9;">by Civora Nexus</small>
@@ -40,9 +40,9 @@
       <a href="student-dashboard.html">Dashboard</a>
       <a class="active" href="mycourses.html">My Courses</a>
       <a href="certificates.html">Certificates</a>
-      <a href="messages.html">Messages</a>
-      <a href="settings.html">Settings</a>
-      <a href="login.html" id="logoutBtn" onclick="confirm">Logout</a>
+      <a href="../messages.html">Messages</a>
+      <a href="../settings.html">Settings</a>
+      <a href="../auth/login.html" id="logoutBtn" onclick="confirm">Logout</a>
     </nav>
   </aside>
 
@@ -52,7 +52,11 @@
   </main>
 
   <!-- JS -->
-  <script src="student-dashboard.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    requireAuth("student");
+  </script>
+  <script src="../js/student-dashboard.js"></script>
 
 </body>
 

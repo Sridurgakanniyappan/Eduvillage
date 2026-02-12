@@ -1,6 +1,6 @@
 from typing import List, Any
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from app.api import deps
 from app.models.course import Course
 from app.models.progress import Progress
@@ -19,7 +19,7 @@ def browse_courses(
     current_user = Depends(deps.get_current_active_user),
 ) -> Any:
     try:
-        courses = db.query(Course).offset(skip).limit(limit).all()
+        courses = db.query(Course).options(joinedload(Course.lessons)).offset(skip).limit(limit).all()
         return courses
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Browse error: {str(e)}")
@@ -33,7 +33,7 @@ def my_courses(
         # Assuming Enrollment model links user and course
         enrollments = db.query(Enrollment).filter(Enrollment.student_id == current_user.id).all()
         ids = [e.course_id for e in enrollments]
-        courses = db.query(Course).filter(Course.id.in_(ids)).all()
+        courses = db.query(Course).options(joinedload(Course.lessons)).filter(Course.id.in_(ids)).all()
         return courses
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"My courses error: {str(e)}")

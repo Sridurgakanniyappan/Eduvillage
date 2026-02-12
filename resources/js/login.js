@@ -84,11 +84,11 @@ async function handleSubmit() {
 
     // Redirect
     if (userRole === "student") {
-      window.location.href = "student-dashboard.html";
+      window.location.href = "../student/student-dashboard.html";
     } else if (userRole === "teacher") {
-      window.location.href = "teacher-dashboard.html";
+      window.location.href = "../teacher/teacher-dashboard.html";
     } else if (userRole === "admin") {
-      window.location.href = "admin-dashboard.html";
+      window.location.href = "../admin/admin-dashboard.html";
     } else {
       alert("Unknown role");
     }

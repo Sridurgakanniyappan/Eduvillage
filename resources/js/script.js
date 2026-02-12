@@ -14,7 +14,7 @@ function scrollToSection(sectionId) {
 // Role-based Login Navigation
 // ================================
 function goToLogin(role) {
-  window.location.href = "login.html?role=" + role;
+  window.location.href = "auth/login.html?role=" + role;
 }
 
 // ================================
